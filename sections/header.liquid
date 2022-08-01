@@ -1,0 +1,207 @@
+{% style %}
+a{
+  text-decoration: none;
+  color: black;
+}
+.sticky__header{
+  position: sticky;
+  top: 0;
+}
+.header__wrapper{
+  background: white;
+}
+.header__mobile{
+  padding-top: 10px;
+}
+.header__grid_desktop{
+  display: none;
+  height: 80px;
+  grid-template-columns: repeat(3, 1fr);
+}
+.header_icons{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 25px;
+}
+.header__navigation_item{
+  list-style: none;
+  border-bottom: 2px solid transparent;
+}
+.header__navigation{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  {% if section.settings.logo_alignment == "center" %}
+  grid-column: 1;
+  grid-row: 1;
+  justify-content: left;
+  {% else %}
+  justify-content: center;
+  {% endif %}
+}
+.header__logo{
+  display: flex;
+  align-items: center;
+  {% if section.settings.logo_alignment == "center" %}
+  justify-content: center;
+  {% endif %}
+}
+.header__logo_img_mobile {
+  width: 120px;
+}
+.header__navigation_item a {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+}
+.header_icons svg{
+  height: 20px;
+  width: 20px;
+}
+.header_icons a {
+  text-decoration: none;
+  color: black;
+  transform: translateY(-50%);
+  top: 50%;
+  display: contents;
+}
+.header__navigation li:hover{
+  border-bottom: 2px solid black;
+}
+.header__navigation_mobile{
+    top: 100%;
+    display: flex;
+    width: 100%;
+    background: white;
+    font-size: 20px;
+    padding-top: 10px;
+}
+.header__navigation_item_mobile{
+    list-style: none;
+    width: 90%;
+    border-bottom: 1px solid #c9c9c9;
+    padding: 10px 10px 20px 10px;
+    text-align: center;
+    font-size: 15px;
+}
+.header__logo_mobile__top{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+@media screen and (min-width: 768px){
+  .header__grid_desktop{
+    display: grid;
+  }
+  .header__logo_img {
+    width: {{ section.settings.logo_size }}px;
+  }
+  .header__mobile{
+    display: none;
+  }
+}
+{% endstyle %}
+
+<div class="header__wrapper" >
+  <header class="header__grid_desktop page-width" >
+      <div class="header__logo">
+        <a href="/">
+          {% if section.settings.image != blank %}
+          <img
+          class="header__logo_img"
+          srcset="{%- if section.settings.image.src.width >= 165 -%}{{ section.settings.image.src | image_url: width: 165 }} 165w,{%- endif -%}
+          {%- if section.settings.image.width >= 360 -%}{{ section.settings.image | image_url: width: 360 }} 360w,{%- endif -%}
+          {%- if section.settings.image.width >= 533 -%}{{ section.settings.image | image_url: width: 533 }} 533w,{%- endif -%}
+          {%- if section.settings.image.width >= 720 -%}{{ section.settings.image | image_url: width: 720 }} 720w,{%- endif -%}
+          {%- if section.settings.image.width >= 1000 -%}{{ section.settings.image | image_url: width: 1000 }} 1000w,{%- endif -%}
+          {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+          {{ section.settings.image | image_url }} {{ section.settings.image.width }}w"
+          src="{{ section.settings.image | image_url: width: 533 }}"
+          alt="Image"
+          loading="lazy"
+          width="{{ section.settings.image.width }}"
+          height="{{ section.settings.image.height }}"
+          >
+        {% endif %}
+        </a>
+      </div>
+    <nav class="header__navigation">
+      {% for link in linklists.main-menu.links -%}
+        <li class="header__navigation_item uppercase">{{ link.title | link_to: link.url }}</li>
+      {%- endfor %}
+    </nav>
+    <div class="header_icons" >
+      <a href="#">{% render 'icon-search' %}</a>
+      <a href="#">{% render 'icon-account' %}</a>
+      <a href="#" class="ajax_cart-open-button" >{% render 'icon-shopping-bag' %}</a>
+    </div>
+  </header>
+  <!-- mobile header -->
+  <header class="header__mobile page-width">
+    <div class="header__logo_mobile__top">
+      <div class="header__logo_mobile">
+        {% if section.settings.image != blank %}
+          <img class="header__logo_img_mobile" src="{{ section.settings.image | image_url }}" alt="Image">
+        {% endif %}
+      </div>
+      <div class="header_icons" >
+        <a href="#">{% render 'icon-search' %}</a>
+        <a href="#">{% render 'icon-account' %}</a>
+        <a href="{{ routes.cart_url }}">{% render 'icon-shopping-bag' %}</a>
+      </div>
+    </div>
+    <nav class="header__navigation_mobile">
+      {% for link in linklists.main-menu.links -%}
+        <li class="header__navigation_item_mobile uppercase">{{ link.title | link_to: link.url }}</li>
+      {%- endfor %}
+    </nav>
+  </header>
+</div>
+
+<script defer>
+  let drawerOpenButton = document.querySelector('.ajax_cart-open-button')
+  drawerOpenButton.addEventListener("click",()=>{
+      document.querySelector('.ajaxcart-container').style.transform = "none"
+  })
+</script>
+
+{% schema %}
+{
+    "name": "Header",
+    "class": "sticky__header",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Logo"
+      },
+      {
+        "type": "range",
+        "id": "logo_size",
+        "min": 100,
+        "max": 300,
+        "step": 25,
+        "unit": "px",
+        "label": "Logo  Size",
+        "default": 200
+      },
+      {
+        "type":"select",
+        "id":"logo_alignment",
+        "label":"Logo alignment",
+        "options":[
+          {
+            "value":"left",
+            "label":"Left"
+          },
+          {
+            "value":"center",
+            "label":"Center"
+          }
+        ],
+        "default":"left"
+      }
+    ]
+  }
+{% endschema %}

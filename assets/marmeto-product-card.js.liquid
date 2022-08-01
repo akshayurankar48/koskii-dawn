@@ -1,0 +1,62 @@
+class MarmetoProductCard extends HTMLElement {
+    constructor() {
+      super();
+      this.currentVariant = {};
+      this.variantSelector = this.querySelector('[name="variant-selector"]');
+      this.addToBagButton = this.querySelector('[name="add_to_cart"]');
+      this.variantData = JSON.parse(this.querySelector('[type="application/json"]').textContent);
+      
+      this.variantPrice = this.querySelector('[name="variant-price"]')
+      this.variantCompareAtPrice = this.querySelector('[name="variant-compare-at-price"]')
+      this.variantImage = this.querySelector('[name="variant-image"]')
+      this.variantSelector.addEventListener('change', this.variantChange.bind(this));
+      this.addToBagButton.addEventListener('click', this.addToBag.bind(this));
+    }
+  
+    variantChange() {
+      let selectedVariantId = parseInt(this.variantSelector.value);   
+      let getCurrentVariant = this.variantData.filter(function(v) {
+        return v.id === selectedVariantId;
+      }) 
+      
+      this.currentVariant = getCurrentVariant[0];
+      this.variantPrice.innerHTML = this.currentVariant.price
+      this.variantCompareAtPrice.innerHTML = this.currentVariant.compare_at_price
+      this.variantImage.srcset = this.currentVariant.featured_image.src
+    }
+  
+    addToBag() {
+      console.log(this.variantSelector.value)
+      fetch('/cart/add.js',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          items:[
+            {
+              id:parseInt(this.variantSelector.value),
+              quantity:1
+            }
+          ]
+        }),
+      })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.status) {
+          console.log(response);
+          return;
+        }
+        if(
+          document.querySelector('ajax-cart')){
+          document.querySelector('ajax-cart').refreshCart(response?.sections['ajaxcart']);
+          document.querySelector('ajax-cart').open(false);
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+      })
+    }
+  }
+  
+  customElements.define('marmeto-product-card', MarmetoProductCard);

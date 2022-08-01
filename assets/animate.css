@@ -1,0 +1,16 @@
+.animate-ease-in{
+    animation: transition-ease-in 1s;
+    animation-iteration-count: 1;
+}
+
+@keyframes transition-ease-in {
+    from {
+        opacity: 0;
+        transform: translate(0,100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0,0);
+    }
+}

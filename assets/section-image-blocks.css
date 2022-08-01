@@ -1,0 +1,33 @@
+.image-blocks__wrapper{
+    padding: 18px 0px;
+}
+.image-blocks h2{
+    margin-bottom:30px;
+}
+.image-blocks__flex{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.image-blocks__flexitem{
+    width: 100%;
+    position: relative;
+    padding-bottom: 120%;
+}
+.image-blocks__flex_image{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+}
+
+@media screen and (min-width: 768px) {
+    .image-blocks__flex{
+        gap: 10px;
+    }
+    .image-blocks__flexitem{
+        position: relative;
+        width: 32.33%;
+        padding-bottom: 50%;
+    }
+}

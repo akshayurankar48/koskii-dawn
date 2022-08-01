@@ -1,0 +1,268 @@
+{% style %}
+.collection-list__wrapper{
+    padding:20px 0px;
+}
+.collection-list__main{
+    margin:0px auto;
+}
+.collection-list__flex{
+    display:flex;
+    gap:25px;
+    justify-content:flex-start;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.collection-list__flex::-webkit-scrollbar{
+    display: none;
+}
+.collection-image{
+    height: 150px;
+    width: 150px;
+    border-radius: {% if section.settings.round_image == true %} 100px {% else %} 0px {% endif %};
+}
+.collection-list__flexitem{
+    text-align: center;
+    width: 50%;
+}
+.collection-list__flexitem a {
+    text-decoration: none;
+}
+.collection-list__heading h2{
+    margin-bottom: 30px;
+}
+.collection-list__heading__align--{{ section.id }}{
+    text-align: {{ section.settings.text_align_mobile }};
+}
+.collection-list__heading_font_color--{{ section.id }} h1{
+    color: {{ section.settings.heading_color_mobile }};
+}
+.collection-title{
+    display: {% if section.settings.show_collection_title == true %} block {% else %} none {% endif %};
+}
+.heading__wrapper{
+    position: relative;
+}
+.collection-list__viewall{
+    position: absolute;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: right;
+    display:{% if section.settings.show_viewall == true %} block {% else %} none {% endif %};
+}
+.collection-list__viewall a{
+    text-decoration: none;
+}
+{% for block in section.blocks %}
+.collection-title--{{ block.id }}{
+    color: {{ block.settings.title_color_mobile }};
+}
+{% endfor %}
+@media screen and ( min-width: 1130px ){
+    .collection-list__flexitem{
+        text-align: center;
+        width: 16.66%;
+    }
+    .collection-list__flex{
+        justify-content: center;
+    }
+    .collection-list__heading__align--{{ section.id }}{
+        text-align: {{ section.settings.text_align }};
+    }
+    .collection-list__heading_font_color--{{ section.id }} h1{
+        color: {{ section.settings.heading_color }};
+    }
+    {% for block in section.blocks %}
+        .collection-title--{{ block.id }}{
+            color: {{ block.settings.title_color }};
+        }
+    {% endfor %}  
+}
+{% endstyle %}
+
+<div class="collection-list__wrapper">
+    <div class="collection-list__main page-width">
+        <div class="heading__wrapper">
+            <div class="collection-list__heading collection-list__heading__align--{{ section.id }} collection-list__heading_font_color--{{ section.id }}">
+                {% if section.settings.heading != nil %}
+                    <h2>{{ section.settings.heading }}</h2>
+                {% endif %}
+            </div>
+            <div class="collection-list__viewall">
+                {% if section.settings.viewall_link != blank %}
+                <a href="{{ section.settings.viewall_link }}">view all</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="collection-list__flex">
+            {% for block in section.blocks %}
+                {% if block.settings.collection_image != nil and block.settings.collection_title != blank and block.settings.image_link != blank %}
+                    <div class="collection-list__flexitem">
+                        <a href="{{ block.settings.image_link }}">
+                            <img class="collection-image" src="{{ block.settings.collection_image | img_url: 'master' }}" alt="Image">
+                        </a>
+                        <div class="collection-title collection-title--{{ block.id }}">
+                            {{ block.settings.collection_title }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name":"Collection list",
+    "class":"section",
+    "settings":[
+        {
+            "type":"header",
+            "content":"HEADING SETTINGS"
+        },
+        {
+            "type":"text",
+            "id":"heading",
+            "label":"Text"
+        },
+        {
+            "type":"color",
+            "id":"heading_color",
+            "label":"Color",
+            "default":"#000000"
+        },
+        {
+            "type":"color",
+            "id":"heading_color_mobile",
+            "label":"Color ( Mobile )",
+            "default":"#000000"
+        },
+        {
+            "type":"header",
+            "content":"ALIGNMENT SETTINGS"
+        },
+        {
+            "type":"select",
+            "id":"text_align",
+            "label":"Text alignment",
+            "options":[
+                {
+                    "value":"right",
+                    "label":"Right"
+                },
+                {
+                    "value":"center",
+                    "label":"Center"
+                },
+                {
+                    "value":"left",
+                    "label":"Left"
+                }
+            ],
+            "default":"left"
+        },
+        {
+            "type":"select",
+            "id":"text_align_mobile",
+            "label":"Text alignment ( Mobile )",
+            "options":[
+                {
+                    "value":"right",
+                    "label":"Right"
+                },
+                {
+                    "value":"center",
+                    "label":"Center"
+                },
+                {
+                    "value":"left",
+                    "label":"Left"
+                }
+            ],
+            "default":"left"
+        },
+        {
+            "type":"header",
+            "content":"OTHER SETTINGS"
+        },
+        {
+            "type": "checkbox",
+            "id": "round_image",
+            "label": "Round image",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "show_viewall",
+            "label": "Show view all",
+            "default": true
+        },
+        {
+            "type": "url",
+            "id": "viewall_link",
+            "label": "Link"
+        },
+        {
+            "type": "checkbox",
+            "id": "show_collection_title",
+            "label": "Show collection title",
+            "default": true
+        }
+    ],
+    "blocks":[
+        {
+            "name":"Collection",
+            "type":"collection",
+            "settings":[
+                {
+                    "type":"header",
+                    "content":"IMAGE SETTINGS"
+                },
+                {
+                    "type":"image_picker",
+                    "id":"collection_image",
+                    "label":"Image",
+                    "info":"500x500 .jpg recommended"
+                },
+                {
+                    "type": "url",
+                    "id": "image_link",
+                    "label": "Link"
+                },
+                {
+                    "type":"header",
+                    "content":"TEXT SETTINGS"
+                },
+                {
+                    "type":"text",
+                    "id":"collection_title",
+                    "label":"Title"
+                },
+                {
+                    "type":"color",
+                    "id":"title_color",
+                    "label":"Color",
+                    "default":"#000000"
+                },
+                {
+                    "type":"color",
+                    "id":"title_color_mobile",
+                    "label":"Color ( Mobile )",
+                    "default":"#000000"
+                }
+            ]
+        }
+    ],
+    "max_blocks":6,
+    "presets":[
+    {
+        "name":"Collection list",
+        "blocks":[
+        {
+            "type":"collection"
+        }
+        ]
+    }
+    ]
+}
+{% endschema %}

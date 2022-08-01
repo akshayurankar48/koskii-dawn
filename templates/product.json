@@ -1,0 +1,91 @@
+{
+  "sections": {
+    "main": {
+      "type": "marmeto-product-template",
+      "blocks": {
+        "87c655f8-188d-4607-8e28-b087c2c63255": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "beddd1c8-5e1f-458e-a7a5-943531fa2f86": {
+          "type": "badge",
+          "settings": {
+          }
+        },
+        "a9ca568c-0343-44a1-bdc9-ee9490bff3fb": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "fe1571b8-5de3-47e4-a57b-9bf3c4d18136": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "e196d198-e94f-4631-ac5a-3c50d4e6543d": {
+          "type": "variant_picker",
+          "settings": {
+          }
+        },
+        "a61f482c-8e69-4d15-971f-333a797f6a7a": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "810ae2f9-3758-405b-af61-a105cd3b4e82": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "27528c34-d911-4648-a978-e80a9ec736cf": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Collapsible tab",
+            "content": "",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "87c655f8-188d-4607-8e28-b087c2c63255",
+        "beddd1c8-5e1f-458e-a7a5-943531fa2f86",
+        "a9ca568c-0343-44a1-bdc9-ee9490bff3fb",
+        "fe1571b8-5de3-47e4-a57b-9bf3c4d18136",
+        "e196d198-e94f-4631-ac5a-3c50d4e6543d",
+        "a61f482c-8e69-4d15-971f-333a797f6a7a",
+        "810ae2f9-3758-405b-af61-a105cd3b4e82",
+        "27528c34-d911-4648-a978-e80a9ec736cf"
+      ],
+      "settings": {
+      }
+    },
+    "product-upsell": {
+      "type": "marmeto-upsell",
+      "settings": {
+        "enable_product_upselling": true,
+        "title": "Upsell Products"
+      }
+    },
+    "product-recommendations": {
+      "type": "marmeto-product-recommendations",
+      "settings": {
+        "enable_product_recommendations": true,
+        "title": "You may also like"
+      }
+    },
+    "recently-viewed-products": {
+      "type": "marmeto-recently-viewed-products",
+      "settings": {
+        "title": "Recently viewed"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-upsell",
+    "product-recommendations",
+    "recently-viewed-products"
+  ]
+}

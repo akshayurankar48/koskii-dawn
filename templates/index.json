@@ -1,0 +1,486 @@
+{
+  "sections": {
+    "1659269890045c5ae6": {
+      "type": "image-carousel",
+      "blocks": {
+        "13fcb9ca-84c4-408a-a793-1a7c3423b4ae": {
+          "type": "slide",
+          "settings": {
+            "bg_image": "shopify:\/\/shop_images\/sabesh-photography-zNnP6UTfsI0-unsplash_1.jpg",
+            "bg_image_mobile": "shopify:\/\/shop_images\/sabesh-photography-zNnP6UTfsI0-unsplash_1.jpg",
+            "preheading": "",
+            "preheading_color": "#000000",
+            "preheading_color_mobile": "#000000",
+            "heading": "Koskii- Celebrating The Girl In you!",
+            "heading_color": "#ffffff",
+            "heading_color_mobile": "#ffffff",
+            "paragraph": "",
+            "paragraph_color": "#000000",
+            "paragraph_color_mobile": "#000000",
+            "button_text": "",
+            "button_link": "",
+            "button_color": "#000000",
+            "button_text_color": "#ffffff",
+            "button_color_mobile": "#000000",
+            "button_text_color_mobile": "#ffffff",
+            "content_alignment": "bottom-left",
+            "text_alignment": "left"
+          }
+        },
+        "c4c1f2e2-dc5e-49a0-a65e-90697a4a793c": {
+          "type": "slide",
+          "settings": {
+            "bg_image": "shopify:\/\/shop_images\/6b6135782cf282056b4ce19fb41d9f3d.w1902.h605.jpg",
+            "bg_image_mobile": "shopify:\/\/shop_images\/6b6135782cf282056b4ce19fb41d9f3d.w1902.h605.jpg",
+            "preheading": "",
+            "preheading_color": "#000000",
+            "preheading_color_mobile": "#000000",
+            "heading": "The Koskii Promise",
+            "heading_color": "#ffffff",
+            "heading_color_mobile": "#ffffff",
+            "paragraph": "",
+            "paragraph_color": "#000000",
+            "paragraph_color_mobile": "#000000",
+            "button_text": "",
+            "button_link": "",
+            "button_color": "#000000",
+            "button_text_color": "#ffffff",
+            "button_color_mobile": "#000000",
+            "button_text_color_mobile": "#ffffff",
+            "content_alignment": "center-left",
+            "text_alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "13fcb9ca-84c4-408a-a793-1a7c3423b4ae",
+        "c4c1f2e2-dc5e-49a0-a65e-90697a4a793c"
+      ],
+      "settings": {
+      }
+    },
+    "165812099817754a3b": {
+      "type": "image-text",
+      "blocks": {
+        "e7c1faf6-abfc-46c7-99f8-b294cdcc75bf": {
+          "type": "caption",
+          "settings": {
+            "caption": "TOPS",
+            "caption_color": "#6e6e6e",
+            "caption_color_mobile": "#000000"
+          }
+        },
+        "2b2f81de-baa5-43c4-98cd-17b1df860f34": {
+          "type": "heading",
+          "settings": {
+            "heading": "Prints that Pop",
+            "heading_color": "#000000",
+            "heading_color_mobile": "#000000"
+          }
+        },
+        "ee62056c-f139-4882-8c40-86e1ffd98573": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph": "<p>Some patterns are made to be seen. Discover blouses that are brilliant to behold.<\/p>",
+            "paragraph_color": "#000000",
+            "paragraph_color_mobile": "#000000"
+          }
+        },
+        "317b8ec3-e631-47a5-aec8-e29b983da23a": {
+          "type": "button",
+          "settings": {
+            "button_text": "SHOP TOPS",
+            "button_link": "#",
+            "button_text_color": "#ffffff",
+            "button_text_color_mobile": "#ffffff",
+            "button_bg_color": "#000000",
+            "button_bg_color_mobile": "#000000",
+            "button_border_color": "#000000",
+            "button_border_color_mobile": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "e7c1faf6-abfc-46c7-99f8-b294cdcc75bf",
+        "2b2f81de-baa5-43c4-98cd-17b1df860f34",
+        "ee62056c-f139-4882-8c40-86e1ffd98573",
+        "317b8ec3-e631-47a5-aec8-e29b983da23a"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/s10.webp",
+        "image_url": "#",
+        "image_alignment": "right",
+        "text_alignment": "center"
+      }
+    },
+    "1658290980ab59325e": {
+      "type": "image-text",
+      "blocks": {
+        "16582909808f79174c-0": {
+          "type": "caption",
+          "settings": {
+            "caption": "Luxe Leisure",
+            "caption_color": "#000000",
+            "caption_color_mobile": "#000000"
+          }
+        },
+        "16582909808f79174c-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Sun Up to Sun Down",
+            "heading_color": "#000000",
+            "heading_color_mobile": "#000000"
+          }
+        },
+        "16582909808f79174c-2": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph": "<p>Late summer’s lingering days call for leisurely living. Slip on sumptuous looks made for soft splendor.<\/p>",
+            "paragraph_color": "#000000",
+            "paragraph_color_mobile": "#000000"
+          }
+        },
+        "16582909808f79174c-3": {
+          "type": "button",
+          "settings": {
+            "button_text": "GET COMFORTABLE",
+            "button_link": "#",
+            "button_text_color": "#ffffff",
+            "button_text_color_mobile": "#ffffff",
+            "button_bg_color": "#000000",
+            "button_bg_color_mobile": "#000000",
+            "button_border_color": "#000000",
+            "button_border_color_mobile": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "16582909808f79174c-0",
+        "16582909808f79174c-1",
+        "16582909808f79174c-2",
+        "16582909808f79174c-3"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/s7.webp",
+        "image_url": "",
+        "image_alignment": "left",
+        "text_alignment": "center"
+      }
+    },
+    "16581211556cc7b3d8": {
+      "type": "image-blocks",
+      "blocks": {
+        "4d9ee9a1-1dca-460e-a19a-32b24bbe1ba4": {
+          "type": "image-block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/7b8d76aa44d09382b64bb7c069e2b047_540x_f4673be9-fc83-4ce9-adb7-11b32a3ea1d5.webp",
+            "heading": "lehengas",
+            "button_text": "SHOP NOW",
+            "button_link": "#"
+          }
+        },
+        "0d545c43-5479-416b-8b6d-3b1b25e43375": {
+          "type": "image-block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/sarees_banner_540x_7bf6c5cc-8dc4-4c73-9034-699160b2fedc.webp",
+            "heading": "sarees",
+            "button_text": "SHOP NOW",
+            "button_link": "#"
+          }
+        },
+        "e5640814-0218-44f6-9cdf-f5fb2c224e88": {
+          "type": "image-block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/e98c1d7e34f453ecbe772c44948eeba3_540x_d7797b08-c0c5-49c7-b99c-67b761705beb.webp",
+            "heading": "gowns",
+            "button_text": "SHOP NOW",
+            "button_link": "#"
+          }
+        },
+        "16a97bc1-e728-4842-b369-15395c4170d6": {
+          "type": "image-block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Unstitched-salwar-suits_Jan-21_Banner_2_540x_6bc0101b-9938-4357-8f9b-b335aff70183.webp",
+            "heading": "dress materials",
+            "button_text": "SHOP NOW",
+            "button_link": "#"
+          }
+        },
+        "78c71635-c225-48b9-881d-6143b2363f03": {
+          "type": "image-block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1200x1700_banner_collection_sharara_540x_2999e96d-f0f7-41b0-8275-46e01a68b908.webp",
+            "heading": "sharara suits",
+            "button_text": "SHOP NOW",
+            "button_link": "#"
+          }
+        },
+        "249c01af-02fd-4564-acc6-3ea78490fff7": {
+          "type": "image-block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1200x1700_banner_collection_pure-silk_540x_205cbffc-06a5-4f79-979f-5b9e8578c2c8.webp",
+            "heading": "pure silk sarees",
+            "button_text": "SHOP NOW",
+            "button_link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "4d9ee9a1-1dca-460e-a19a-32b24bbe1ba4",
+        "0d545c43-5479-416b-8b6d-3b1b25e43375",
+        "e5640814-0218-44f6-9cdf-f5fb2c224e88",
+        "16a97bc1-e728-4842-b369-15395c4170d6",
+        "78c71635-c225-48b9-881d-6143b2363f03",
+        "249c01af-02fd-4564-acc6-3ea78490fff7"
+      ],
+      "settings": {
+        "pre_heading": "",
+        "heading": "New Arrivals"
+      }
+    },
+    "1659328360896ea7cc": {
+      "type": "image-carousel",
+      "blocks": {
+        "16d432b6-6f65-46cb-be99-a5003582483f": {
+          "type": "slide",
+          "settings": {
+            "bg_image": "shopify:\/\/shop_images\/f48ac714fe26acb0bb334270fc6d5123.w1920.h720.jpg",
+            "bg_image_mobile": "shopify:\/\/shop_images\/f48ac714fe26acb0bb334270fc6d5123.w1920.h720.jpg",
+            "preheading": "",
+            "preheading_color": "#000000",
+            "preheading_color_mobile": "#000000",
+            "heading": "",
+            "heading_color": "#000000",
+            "heading_color_mobile": "#000000",
+            "paragraph": "",
+            "paragraph_color": "#000000",
+            "paragraph_color_mobile": "#000000",
+            "button_text": "SHOP",
+            "button_link": "",
+            "button_color": "#000000",
+            "button_text_color": "#ffffff",
+            "button_color_mobile": "#000000",
+            "button_text_color_mobile": "#ffffff",
+            "content_alignment": "top-left",
+            "text_alignment": "left"
+          }
+        },
+        "c070849a-2a85-4907-ba18-e92340303b8f": {
+          "type": "slide",
+          "settings": {
+            "bg_image": "shopify:\/\/shop_images\/text.jpg",
+            "bg_image_mobile": "shopify:\/\/shop_images\/text.jpg",
+            "preheading": "",
+            "preheading_color": "#000000",
+            "preheading_color_mobile": "#000000",
+            "heading": "",
+            "heading_color": "#000000",
+            "heading_color_mobile": "#000000",
+            "paragraph": "",
+            "paragraph_color": "#000000",
+            "paragraph_color_mobile": "#000000",
+            "button_text": "SHOP",
+            "button_link": "",
+            "button_color": "#000000",
+            "button_text_color": "#ffffff",
+            "button_color_mobile": "#000000",
+            "button_text_color_mobile": "#ffffff",
+            "content_alignment": "top-left",
+            "text_alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "16d432b6-6f65-46cb-be99-a5003582483f",
+        "c070849a-2a85-4907-ba18-e92340303b8f"
+      ],
+      "settings": {
+      }
+    },
+    "16582141764f88c571": {
+      "type": "collection-list",
+      "blocks": {
+        "2d982afd-7002-4a6b-8e02-ad5e833cb51c": {
+          "type": "collection",
+          "settings": {
+            "collection_image": "shopify:\/\/shop_images\/Frame_698_1.jpg",
+            "image_link": "#",
+            "collection_title": "Rangrez",
+            "title_color": "#000000",
+            "title_color_mobile": "#000000"
+          }
+        },
+        "16582141763e081576-0": {
+          "type": "collection",
+          "settings": {
+            "collection_image": "shopify:\/\/shop_images\/Frame_698.jpg",
+            "image_link": "#",
+            "collection_title": "Zurii",
+            "title_color": "#000000",
+            "title_color_mobile": "#000000"
+          }
+        },
+        "64ca56c4-f450-474a-a6d6-9b72a08fe00a": {
+          "type": "collection",
+          "settings": {
+            "collection_image": "shopify:\/\/shop_images\/Frame_698_2.jpg",
+            "image_link": "#",
+            "collection_title": "Modern Shehzadi",
+            "title_color": "#000000",
+            "title_color_mobile": "#000000"
+          }
+        },
+        "826c85b2-56d3-4cf1-9797-34b6a4ba32c6": {
+          "type": "collection",
+          "settings": {
+            "collection_image": "shopify:\/\/shop_images\/Frame_698_3.jpg",
+            "image_link": "#",
+            "collection_title": "Get Festive",
+            "title_color": "#000000",
+            "title_color_mobile": "#000000"
+          }
+        },
+        "01c12fa9-8f4c-4250-9129-70fd900c15de": {
+          "type": "collection",
+          "settings": {
+            "collection_image": "shopify:\/\/shop_images\/Frame_698_4.jpg",
+            "image_link": "#",
+            "collection_title": "Banaras Se",
+            "title_color": "#000000",
+            "title_color_mobile": "#000000"
+          }
+        },
+        "7feb481d-9223-4446-becb-c5fd14615141": {
+          "type": "collection",
+          "settings": {
+            "collection_image": "shopify:\/\/shop_images\/Frame_698_5.jpg",
+            "image_link": "#",
+            "collection_title": "Bridesmaid",
+            "title_color": "#000000",
+            "title_color_mobile": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "2d982afd-7002-4a6b-8e02-ad5e833cb51c",
+        "16582141763e081576-0",
+        "64ca56c4-f450-474a-a6d6-9b72a08fe00a",
+        "826c85b2-56d3-4cf1-9797-34b6a4ba32c6",
+        "01c12fa9-8f4c-4250-9129-70fd900c15de",
+        "7feb481d-9223-4446-becb-c5fd14615141"
+      ],
+      "settings": {
+        "heading": "Our collections",
+        "heading_color": "#000000",
+        "heading_color_mobile": "#000000",
+        "text_align": "left",
+        "text_align_mobile": "left",
+        "round_image": true,
+        "show_viewall": true,
+        "viewall_link": "shopify:\/\/collections",
+        "show_collection_title": true
+      }
+    },
+    "1658551926b8eda732": {
+      "type": "product-list",
+      "settings": {
+        "title": "New & Necessary",
+        "show_viewall": true,
+        "collection": "summer-collection",
+        "product_limit": 4
+      }
+    },
+    "16584245970ce92615": {
+      "type": "blog-list",
+      "settings": {
+        "title": "Blog",
+        "text_align": "left",
+        "blog": "news"
+      }
+    },
+    "1658574210aaf0b926": {
+      "type": "testimonials",
+      "blocks": {
+        "96d030cd-a982-410b-8853-4a1fc9aa76e8": {
+          "type": "testimony",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/artem-mihailov-z99qxEqKeQ0-unsplash.jpg",
+            "star": 5,
+            "name": "Anusha",
+            "paragraph": "I was sceptical at first as I have had bad experiences with online purchases from other sites. I love my shirt, it looks even better on than in the pics."
+          }
+        },
+        "850522b2-9e9a-4395-80e5-111562dcf8d1": {
+          "type": "testimony",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/ivan-kazlouskij-rEEa-UKCKMw-unsplash.jpg",
+            "star": 5,
+            "name": "Margot",
+            "paragraph": "I’ve have purchased over twenty different items from Vine Apparel and every single purchase has arrived promptly, fitted perfectly, are affordable, versatile and on trend. Put simply, they are the best"
+          }
+        },
+        "ec4e3a44-1e7c-4d22-b7e6-d70e4cb12c57": {
+          "type": "testimony",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/artem-mihailov-5gmVCqHCeqI-unsplash.jpg",
+            "star": 5,
+            "name": "Catherine",
+            "paragraph": "I have ordered three cardigans from Vine Apparel this season. Two lighter ones and one warmer one. They are stylish and comfortable."
+          }
+        }
+      },
+      "block_order": [
+        "96d030cd-a982-410b-8853-4a1fc9aa76e8",
+        "850522b2-9e9a-4395-80e5-111562dcf8d1",
+        "ec4e3a44-1e7c-4d22-b7e6-d70e4cb12c57"
+      ],
+      "settings": {
+      }
+    },
+    "165855131346bdd98e": {
+      "type": "apps",
+      "blocks": {
+        "d441943a-34a6-420b-9b86-e79257f22975": {
+          "type": "shopify:\/\/apps\/instafeed-instagram-feed\/blocks\/app-block\/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "heading_size": 20,
+            "feed_width": 100,
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "d441943a-34a6-420b-9b86-e79257f22975"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "1658547200a5f24933": {
+      "type": "usp",
+      "settings": {
+      }
+    },
+    "165839723880b981da": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "Get 20% Off  Your First Order",
+        "paragraph": "<p>Sign up to be the first to hear about new arrivals, inspiration and styling tips, promotions, and access to exclusive offers while enjoying 20% off your first order.<\/p>"
+      }
+    }
+  },
+  "order": [
+    "1659269890045c5ae6",
+    "165812099817754a3b",
+    "1658290980ab59325e",
+    "16581211556cc7b3d8",
+    "1659328360896ea7cc",
+    "16582141764f88c571",
+    "1658551926b8eda732",
+    "16584245970ce92615",
+    "1658574210aaf0b926",
+    "165855131346bdd98e",
+    "1658547200a5f24933",
+    "165839723880b981da"
+  ]
+}

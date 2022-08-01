@@ -1,0 +1,94 @@
+{% style %}
+.newsletter__wrapper{
+    padding-bottom: 80px;
+}
+.newsletter__main{
+    max-width: 620px;
+    margin:0px auto;
+    padding: 0px 30px;
+}
+.text_align--center{
+    text-align: center;
+}
+.newsletter__paragraph{
+    margin: 20px 0px;
+}
+.newsletter__heading h2{
+    font-size: 35px;
+}
+.newsletter__paragraph p{
+    font-size: 15px;
+}
+.form__flex{
+    display: flex;
+    justify-content: center;
+    max-width: 450px;
+    margin: 0px auto;
+}
+.form__flex input {
+    width: 70%;
+    border: 1px solid black;
+    padding: 0px 20px;
+}
+.form__flex input:focus-visible{
+    outline: none;
+    box-shadow: none;
+}
+.submit_button{
+    width: 30%;
+    padding: 15px 20px;
+    background: black;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    border: none;
+}
+{% endstyle %}
+
+<div class="newsletter__wrapper page-width">
+    <div class="newsletter__main" >
+        <div class="newsletter__heading text_align--center">
+            {% if section.settings.heading != blank %}
+                <h2>{{ section.settings.heading }}</h2>
+            {% endif %}
+        </div>
+        <div class="newsletter__paragraph text_align--center">
+            {% if section.settings.paragraph != blank %}
+                {{ section.settings.paragraph }}
+            {% endif %}
+        </div>
+        {% form 'customer', class: "form__flex" %}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <input type="email" name="contact[email]" value placeholder="Enter your email">
+            <button type="submit" class="submit_button" name="commit">SIGN UP</a>
+        {% endform %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name":"Newsletter",
+    "tag":"section",
+    "class":"section",
+    "settings":[
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Heading"
+        },
+        {
+            "type": "richtext",
+            "id": "paragraph",
+            "label": "paragraph",
+            "default": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, esse!</p>"
+        }
+    ],
+    "presets":[
+        {
+            "name":"Newsletter"
+        }
+    ]
+}
+{% endschema %}

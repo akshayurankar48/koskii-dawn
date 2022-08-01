@@ -1,0 +1,127 @@
+{{ 'section-image-blocks.css' | asset_url | stylesheet_tag }}
+{% style %}
+.content{
+    position: absolute;
+    top: 100%;
+    transform: translateY(-100%);
+    font-size: 30px;
+    color: white;
+    padding: 20px;
+}
+.content h2{
+    margin: 0px;
+    color: white !important;
+}
+._button{
+    font-size: 15px;
+    padding: 10px 20px;
+    background: white;
+    color: black;
+    font-weight: bold;
+}
+.image-blocks__flexitem{
+    overflow: hidden;
+}
+.image-blocks__flex_image:hover {
+    transition: transform .5s;
+}
+.image-blocks__flex_image:hover {
+    transform: scale(1.1);
+}
+{% endstyle %}
+<div class="image-blocks__wrapper " >
+    <div class="image-blocks page-width" >
+    <div>{{ section.settings.pre_heading }}</div>
+    <h2>{{ section.settings.heading }}</h2>
+    <div class="image-blocks__flex">
+        {% for block in section.blocks %}
+        <div class="image-blocks__flexitem">
+            {% if block.settings.image!=nil %}
+                    <img
+                    class="image-blocks__flex_image"
+                    srcset="{%- if block.settings.image.src.width >= 165 -%}{{ block.settings.image.src | image_url: width: 165 }} 165w,{%- endif -%}
+                    {%- if block.settings.image.width >= 360 -%}{{ block.settings.image | image_url: width: 360 }} 360w,{%- endif -%}
+                    {%- if block.settings.image.width >= 533 -%}{{ block.settings.image | image_url: width: 533 }} 533w,{%- endif -%}
+                    {%- if block.settings.image.width >= 720 -%}{{ block.settings.image | image_url: width: 720 }} 720w,{%- endif -%}
+                    {%- if block.settings.image.width >= 1000 -%}{{ block.settings.image | image_url: width: 1000 }} 1000w,{%- endif -%}
+                    {%- if block.settings.image.width >= 1500 -%}{{ block.settings.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                    {{ block.settings.image | image_url }} {{ block.settings.image.width }}w"
+                    src="{{ block.settings.image | image_url: width: 533 }}"
+                    alt="Image"
+                    loading="lazy"
+                    width="{{ block.settings.image.width }}"
+                    height="{{ block.settings.image.height }}"
+                    >
+                    <div class="content">
+                        {% if block.settings.heading != nil %}
+                            <h2 class="uppercase" >{{ block.settings.heading }}</h2>
+                        {% endif %}
+                        {% if block.settings.button_link != nil and block.settings.button_text != nil %}
+                            <a class="_button" href="{{ block.settings.button_link }}">{{ block.settings.button_text }}</a>
+                        {% endif %}
+                    </div>
+            {% else %}
+                {{ 'image' | placeholder_svg_tag }}
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name":"Image blocks",
+    "class":"section",
+    "settings":[
+        {
+            "type":"text",
+            "id":"pre_heading",
+            "label":"Pre heading"
+        },
+        {
+            "type":"text",
+            "id":"heading",
+            "label":"Heading"
+        }
+    ],
+    "blocks":[
+        {
+            "name":"Image",
+            "type":"image-block",
+            "settings":[
+                {
+                    "type":"image_picker",
+                    "id":"image",
+                    "label":"Image"
+                },
+                {
+                    "type":"text",
+                    "id":"heading",
+                    "label":"Heading"
+                },
+                {
+                    "type":"text",
+                    "id":"button_text",
+                    "label":"Button text"
+                },
+                {
+                    "type":"url",
+                    "id":"button_link",
+                    "label":"Link"
+                }
+            ]
+        }
+    ],
+    "presets":[
+        {
+            "name":"Image blocks",
+            "blocks":[
+                {
+                    "type":"image-block"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

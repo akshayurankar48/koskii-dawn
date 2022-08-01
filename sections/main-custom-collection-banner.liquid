@@ -1,0 +1,82 @@
+{% style %}
+.collection-banner {
+  position: relative;
+  margin-bottom: 25px;
+  height: 415px;
+  overflow: hidden;
+}
+.collection-banner__image {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+}
+.collection-banner__image-mobile {
+  display: none;
+}
+.collection-banner__title-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 500px;
+  transform: translate(-50%, -50%);
+}
+.collection-banner__title {
+  margin: 0;
+  color: {{ section.settings.title_color }};
+  font-size: 30px;
+  text-align: center;
+}
+
+.mmc-header__title {
+  display: {% if show_title == false %} none {% else %} block {% endif %} ;
+}
+
+@media screen and (min-width: 768px) {
+  .collection-banner__image {
+    display: none;
+  }
+  .collection-banner__image-mobile {
+    display: block;
+    width: 100%;
+  }
+}
+{% endstyle %}
+
+{%- if collection.image -%}
+  {% assign mobileBanner = collection.metafields.collection.custom.mobile_banner %}
+  {% assign show_title = false %}
+  <div class="collection-banner">    
+    <img src="{{ collection.image | img_url: 'master' }}" 
+         width="{{ collection.image.width }}"
+         height="{{ collection.image.height }}"
+         class="collection-banner__image"
+         loading="lazy"
+         alt="{{ collection.title | escape }}"
+    />    
+    <img src="{{ mobileBanner | default: collection.image | img_url: 'master' }}" 
+         class="collection-banner__image-mobile"
+         alt="{{ collection.title | escape }}"
+    />
+    
+    <div class="collection-banner__title-wrapper">
+      <h1 class="collection-banner__title">
+        {{ collection.title }}
+      </h1>
+    </div>
+  </div>
+{%- endif -%}
+{% schema %}
+  {
+    "name": "Custom collection banner",
+    "settings":[
+      {
+        "type":"color",
+        "id":"title_color",
+        "label":"Title color",
+        "default":"#000000"
+      }
+    ]
+  }
+{% endschema %}
+
+ 

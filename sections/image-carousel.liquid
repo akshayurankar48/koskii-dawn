@@ -1,0 +1,283 @@
+{{ 'section-image-with-textoverlay.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+.image_slide{
+  height: 100%;
+}
+.carousel-cell {
+  width: 100%; /* full width */
+  margin-right: 10px;
+}
+{% for block in section.blocks %}
+  .textoverlay__preheading--{{ block.id }}{
+    color: {{ block.settings.preheading_color_mobile }}
+  }
+  .textoverlay__heading--{{ block.id }}{
+    color: {{ block.settings.heading_color_mobile }}
+  }
+  .textoverlay__paragraph--{{ block.id }}{
+    color: {{ block.settings.paragraph_color_mobile }}
+  }
+  .textoverlay__button--{{ block.id }}{
+    background-color: {{ block.settings.button_color_mobile }};
+    color: {{ block.settings.button_text_color_mobile }};
+  }
+  .textoverlay_text_align--{{ block.id }}{
+    text-align: {{ block.settings.text_alignment }}
+  }
+{% endfor %}
+@media screen and (min-width: 768px){
+{% for block in section.blocks %}
+  .textoverlay__preheading--{{ block.id }}{
+    color: {{ block.settings.preheading_color }}
+  }
+  .textoverlay__heading--{{ block.id }}{
+    color: {{ block.settings.heading_color }}
+  }
+  .textoverlay__paragraph--{{ block.id }}{
+    color: {{ block.settings.paragraph_color }}
+  }
+  .textoverlay__button--{{ block.id }}{
+    background-color: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+  }
+{% endfor %}
+}
+{% endstyle %}
+
+<div class="image_with_textoverlay__wrapper">
+    <div class="image_with_textoverlay carousel" data-flickity='{"autoPlay":2000,"prevNextButtons": false}'>
+          {% for block in section.blocks %}
+        <div class="image_slide carousel-cell" >
+          <div class="image_with_textoverlay__image_wrapper">
+            <img src="{{ block.settings.bg_image | img_url: 'master' }}" class="image_with_textoverlay__image textoverlay__image__desktop" >
+            <img src="{{ block.settings.bg_image_mobile | default: block.settings.bg_image | img_url: 'master' }}" class="image_with_textoverlay__image textoverlay__image__mobile" >
+          </div>
+          <div class="image_with_textoverlay__flex page-width textoverlay_content_align--{{ block.settings.content_alignment }}" >
+              <div class="textoverlay__flex__item textoverlay_text_align--{{ block.id }}" >
+                  {% if block.settings.preheading != nil %}
+                      <div class="textoverlay__preheading textoverlay__preheading--{{ block.id }}" >{{ block.settings.preheading }}</div>
+                  {% endif %}
+                  {% if block.settings.heading != nil %}
+                      <h2 class="textoverlay__heading textoverlay__heading--{{ block.id }}" >{{ block.settings.heading }}</h2>
+                  {% endif %}
+                  {% if block.settings.paragraph != nil %}
+                      <div class="textoverlay__paragraph textoverlay__paragraph--{{ block.id }}" >{{ block.settings.paragraph }}</div>
+                  {% endif %}
+                  {% if block.settings.button_text != nil and block.settings.button_link != nil %}
+                      <a href="{{ block.settings.button_link }}" class="textoverlay__button textoverlay__button--{{ block.id }}" >{{ block.settings.button_text }}</a>
+                  {% endif %}
+              </div>
+          </div>
+        </div>
+          {% endfor %}
+    </div>
+</div>
+
+
+{% schema %}
+{
+    "name":"Image with Text Overlay",
+    "class":"section",
+    "blocks":[
+      {
+        "name":"slide",
+        "type":"slide",
+        "settings":[
+        {
+            "type":"header",
+            "content":"IMAGE SETTINGS"
+        },
+        {
+            "type":"image_picker",
+            "id":"bg_image",
+            "label":"Image",
+            "info":"1300x600 jpg recommended"
+        },
+        {
+            "type":"image_picker",
+            "id":"bg_image_mobile",
+            "label":"Image ( Mobile )"
+        },
+        {
+            "type":"header",
+            "content":"PREHEADING SETTINGS"
+        },
+        {
+            "type":"text",
+            "id":"preheading",
+            "label":"Text",
+            "default":"PREHEADING"
+        },
+        {
+            "type":"color",
+            "id":"preheading_color",
+            "label":"Text color",
+            "default":"#000000"
+        },
+        {
+            "type":"color",
+            "id":"preheading_color_mobile",
+            "label":"Text color ( Mobile )",
+            "default":"#000000"
+        },
+        {
+            "type":"header",
+            "content":"HEADING SETTINGS"
+        },
+        {
+            "type":"text",
+            "id":"heading",
+            "label":"Text",
+            "default":"HEADING"
+        },
+        {
+            "type":"color",
+            "id":"heading_color",
+            "label":"Text color",
+            "default":"#000000"
+        },
+        {
+            "type":"color",
+            "id":"heading_color_mobile",
+            "label":"Text color ( Mobile )",
+            "default":"#000000"
+        },
+        {
+            "type":"header",
+            "content":"PARAGRAPH SETTINGS"
+        },
+        {
+            "type":"richtext",
+            "id":"paragraph",
+            "label":"Text",
+            "default":"<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque ducimus adipisci iusto ratione omnis quo suscipit fugit explicabo ipsa, quas, illum recusandae temporibus voluptate! Natus, temporibus. At molestiae natus quod.</p>"
+        },
+        {
+            "type":"color",
+            "id":"paragraph_color",
+            "label":"Text color",
+            "default":"#000000"
+        },
+        {
+            "type":"color",
+            "id":"paragraph_color_mobile",
+            "label":"Text color ( Mobile )",
+            "default":"#000000"
+        },
+        {
+            "type":"header",
+            "content":"BUTTON SETTINGS"
+        },
+        {
+            "type":"text",
+            "id":"button_text",
+            "label":"Text",
+            "default":"SHOP"
+        },
+        {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+        },
+        {
+            "type":"color",
+            "id":"button_color",
+            "label":"Button color",
+            "default":"#000000"
+        },
+        {
+            "type":"color",
+            "id":"button_text_color",
+            "label":"Text color",
+            "default":"#ffffff"
+        },
+        {
+            "type":"color",
+            "id":"button_color_mobile",
+            "label":"Button color ( Mobile )",
+            "default":"#000000"
+        },
+        {
+            "type":"color",
+            "id":"button_text_color_mobile",
+            "label":"Text color ( Mobile )",
+            "default":"#ffffff"
+        },
+        {
+            "type":"header",
+            "content":"ALIGNMENT SETTINGS"
+        },
+        {
+            "type":"select",
+            "id":"content_alignment",
+            "label":"Align Content",
+            "options":[
+            {
+                "value":"top-left",
+                "label":"Top Left"
+            },
+            {
+                "value":"top-center",
+                "label":"Top Center"
+            },
+            {
+                "value":"top-right",
+                "label":"Top Right"
+            },
+            {
+                "value":"center-left",
+                "label":"Center Left"
+            },
+            {
+                "value":"center-center",
+                "label":"Center Center"
+            },
+            {
+                "value":"center-right",
+                "label":"Center Right"
+            },
+            {
+                "value":"bottom-left",
+                "label":"Bottom Left"
+            },
+            {
+                "value":"bottom-center",
+                "label":"Bottom Center"
+            },
+            {
+                "value":"bottom-right",
+                "label":"Bottom Right"
+            }
+            ],
+            "default":"top-left"
+        },
+        {
+            "type":"select",
+            "id":"text_alignment",
+            "label":"Text Align",
+            "options":[
+                {
+                    "value":"left",
+                    "label":"Left"
+                },
+                {
+                    "value":"center",
+                    "label":"Center"
+                },
+                {
+                    "value":"right",
+                    "label":"Right"
+                }
+            ]
+        }
+        ]
+      }
+    ],
+    "presets":[
+    {
+        "name":"Image with Text carousel"
+    }
+    ]
+}
+{% endschema %}

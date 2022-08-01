@@ -1,0 +1,261 @@
+{{ 'section-image-with-textoverlay.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+.textoverlay__preheading--{{ section.id }}{
+    color: {{ section.settings.preheading_color_mobile }}
+}
+.textoverlay__heading--{{ section.id }}{
+    color: {{ section.settings.heading_color_mobile }}
+}
+.textoverlay__paragraph--{{ section.id }}{
+    color: {{ section.settings.paragraph_color_mobile }}
+}
+.textoverlay__button--{{ section.id }}{
+    background-color: {{ section.settings.button_color_mobile }};
+    color: {{ section.settings.button_text_color_mobile }};
+}
+.textoverlay_text_align--{{ section.id }}{
+    text-align: {{ section.settings.text_alignment }}
+}
+@media screen and (min-width: 768px){
+    .textoverlay__preheading--{{ section.id }}{
+        color: {{ section.settings.preheading_color }}
+    }
+    .textoverlay__heading--{{ section.id }}{
+        color: {{ section.settings.heading_color }}
+    }
+    .textoverlay__paragraph--{{ section.id }}{
+        color: {{ section.settings.paragraph_color }}
+    }
+    .textoverlay__button--{{ section.id }}{
+        background-color: {{ section.settings.button_color }};
+        color: {{ section.settings.button_text_color }};
+    }
+}
+{% endstyle %}
+
+<div class="image_with_textoverlay__wrapper">
+    <div class="image_with_textoverlay" >
+        <div class="image_with_textoverlay__image_wrapper" >
+            <img src="{{ section.settings.bg_image | img_url: 'master' }}" class="image_with_textoverlay__image textoverlay__image__desktop" >
+            <img src="{{ section.settings.bg_image_mobile | default: section.settings.bg_image | img_url: 'master' }}" class="image_with_textoverlay__image textoverlay__image__mobile" >
+        </div>
+        <div class="image_with_textoverlay__flex page-width textoverlay_content_align--{{ section.settings.content_alignment }}" >
+            <div class="textoverlay__flex__item textoverlay_text_align--{{ section.id }}" >
+                {% if section.settings.preheading != nil %}
+                    <div class="textoverlay__preheading textoverlay__preheading--{{ section.id }}" >{{ section.settings.preheading }}</div>
+                {% endif %}
+                {% if section.settings.heading != nil %}
+                    <h2 class="textoverlay__heading textoverlay__heading--{{ section.id }}" >{{ section.settings.heading }}</h2>
+                {% endif %}
+                {% if section.settings.paragraph != nil %}
+                    <div class="textoverlay__paragraph textoverlay__paragraph--{{ section.id }}" >{{ section.settings.paragraph }}</div>
+                {% endif %}
+                {% if section.settings.button_text != nil and section.settings.button_link != nil %}
+                    <a href="{{ section.settings.button_link }}" class="textoverlay__button textoverlay__button--{{ section.id }}" >{{ section.settings.button_text }}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name":"Image with Text Overlay",
+    "class":"section",
+    "settings":[
+        {
+            "type":"header",
+            "content":"IMAGE SETTINGS"
+        },
+        {
+            "type":"image_picker",
+            "id":"bg_image",
+            "label":"Image",
+            "info":"1300x600 jpg recommended"
+        },
+        {
+            "type":"image_picker",
+            "id":"bg_image_mobile",
+            "label":"Image ( Mobile )"
+        },
+        {
+            "type":"header",
+            "content":"PREHEADING SETTINGS"
+        },
+        {
+            "type":"text",
+            "id":"preheading",
+            "label":"Text",
+            "default":"PREHEADING"
+        },
+        {
+            "type":"color",
+            "id":"preheading_color",
+            "label":"Text color",
+            "default":"#000000"
+        },
+        {
+            "type":"color",
+            "id":"preheading_color_mobile",
+            "label":"Text color ( Mobile )",
+            "default":"#000000"
+        },
+        {
+            "type":"header",
+            "content":"HEADING SETTINGS"
+        },
+        {
+            "type":"text",
+            "id":"heading",
+            "label":"Text",
+            "default":"HEADING"
+        },
+        {
+            "type":"color",
+            "id":"heading_color",
+            "label":"Text color",
+            "default":"#000000"
+        },
+        {
+            "type":"color",
+            "id":"heading_color_mobile",
+            "label":"Text color ( Mobile )",
+            "default":"#000000"
+        },
+        {
+            "type":"header",
+            "content":"PARAGRAPH SETTINGS"
+        },
+        {
+            "type":"richtext",
+            "id":"paragraph",
+            "label":"Text",
+            "default":"<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque ducimus adipisci iusto ratione omnis quo suscipit fugit explicabo ipsa, quas, illum recusandae temporibus voluptate! Natus, temporibus. At molestiae natus quod.</p>"
+        },
+        {
+            "type":"color",
+            "id":"paragraph_color",
+            "label":"Text color",
+            "default":"#000000"
+        },
+        {
+            "type":"color",
+            "id":"paragraph_color_mobile",
+            "label":"Text color ( Mobile )",
+            "default":"#000000"
+        },
+        {
+            "type":"header",
+            "content":"BUTTON SETTINGS"
+        },
+        {
+            "type":"text",
+            "id":"button_text",
+            "label":"Text",
+            "default":"SHOP"
+        },
+        {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+        },
+        {
+            "type":"color",
+            "id":"button_color",
+            "label":"Button color",
+            "default":"#000000"
+        },
+        {
+            "type":"color",
+            "id":"button_text_color",
+            "label":"Text color",
+            "default":"#ffffff"
+        },
+        {
+            "type":"color",
+            "id":"button_color_mobile",
+            "label":"Button color ( Mobile )",
+            "default":"#000000"
+        },
+        {
+            "type":"color",
+            "id":"button_text_color_mobile",
+            "label":"Text color ( Mobile )",
+            "default":"#ffffff"
+        },
+        {
+            "type":"header",
+            "content":"ALIGNMENT SETTINGS"
+        },
+        {
+            "type":"select",
+            "id":"content_alignment",
+            "label":"Align Content",
+            "options":[
+            {
+                "value":"top-left",
+                "label":"Top Left"
+            },
+            {
+                "value":"top-center",
+                "label":"Top Center"
+            },
+            {
+                "value":"top-right",
+                "label":"Top Right"
+            },
+            {
+                "value":"center-left",
+                "label":"Center Left"
+            },
+            {
+                "value":"center-center",
+                "label":"Center Center"
+            },
+            {
+                "value":"center-right",
+                "label":"Center Right"
+            },
+            {
+                "value":"bottom-left",
+                "label":"Bottom Left"
+            },
+            {
+                "value":"bottom-center",
+                "label":"Bottom Center"
+            },
+            {
+                "value":"bottom-right",
+                "label":"Bottom Right"
+            }
+            ],
+            "default":"top-left"
+        },
+        {
+            "type":"select",
+            "id":"text_alignment",
+            "label":"Text Align",
+            "options":[
+                {
+                    "value":"left",
+                    "label":"Left"
+                },
+                {
+                    "value":"center",
+                    "label":"Center"
+                },
+                {
+                    "value":"right",
+                    "label":"Right"
+                }
+            ]
+        }
+    ],
+    "presets":[
+    {
+        "name":"Image with Text Overlay"
+    }
+    ]
+}
+{% endschema %}

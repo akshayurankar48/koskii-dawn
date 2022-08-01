@@ -1,0 +1,83 @@
+{% assign div = section.settings.menu.links.size | plus: 1 %}
+{% assign width = 100 | divided_by: div %}
+
+{% style %}
+.wrapper{
+    background: #fff5f5;
+}
+.footer__main{
+    padding-top: 20px;
+}
+.footer__flex{
+    padding: 50px 0px;
+    display: flex;
+    flex-direction: column;
+}
+.footer__flexitem{
+    width: 100%;
+    padding: 10px 30px;
+}
+.footer__logo{
+    height: 50px;
+}
+.footer__credits{
+    padding-bottom: 20px;
+    text-align: center;
+}
+.footer__link-title{
+    margin-bottom: 8px;
+    color: #a96d69;
+}
+.footer__link{
+    list-style: none;
+}
+
+@media screen and (min-width: 768px){
+    .footer__flex{
+        flex-direction: row;
+        padding:0px;
+    }
+    .footer__flexitem{
+        width: {{ width }}%;
+    }
+}
+{% endstyle %}
+<footer class="footer__main page-width" >
+    <div class="footer__flex">
+        {% if section.settings.image != nil %}
+            <div class="footer__flexitem">
+                <img class="footer__logo" src="{{ section.settings.image | image_url }}" alt="logo">
+            </div>
+        {% endif %}
+        {% for linklist in section.settings.menu.links %}
+            <div class="footer__flexitem">
+                <ul class="footer__link-title" >{{ linklist.title }}</ul>
+                {% for link in linklist.links %}
+                    <li class="footer__link">{{ link.title | link_to: link.url }}</li>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="footer__credits" >
+        © 2022, koskii
+    </div>
+</footer>
+
+{% schema %}
+{
+    "name":"footer",
+    "class":"section wrapper",
+    "settings":[
+        {
+            "type":"image_picker",
+            "id":"image",
+            "label":"Logo"
+        },
+        {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Menu"
+        }
+    ]
+}
+{% endschema %}

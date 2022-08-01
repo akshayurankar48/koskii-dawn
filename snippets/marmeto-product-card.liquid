@@ -1,0 +1,113 @@
+{% style %}
+.mm-product-card__action button{
+  display: block;
+  width: 100%;
+  background: #f8b3a6;
+  color: black;
+}
+.mm-product-card__action button:hover{
+  border: 0px;
+}
+.hidden{
+  display: none;
+}
+{% endstyle %}
+<marmeto-product-card class="mm-product-card">
+    {%- liquid
+      assign current_variant = product.selected_or_first_available_variant
+      assign price = current_variant.price
+      assign compare_at_price = current_variant.compare_at_price
+      assign available = current_variant.available | default: false
+    -%}
+
+    <div class="mm-product-card__wrap">
+      {%- liquid
+        assign featured_media_aspect_ratio = product.featured_media.aspect_ratio
+
+        if product.featured_media.aspect_ratio == nil
+          assign featured_media_aspect_ratio = 1
+        endif
+      -%}
+
+      {%- if current_variant.featured_media -%}
+        <a href="{{ product.url }}"
+           class="mm-product-card__link"
+           style="padding-bottom: 150%;">
+           <img srcset="{%- if current_variant.featured_media.width >= 165 -%}{{ current_variant.featured_media | img_url: '165x' }} 165w,{%- endif -%}
+              {%- if current_variant.featured_media.width >= 360 -%}{{ current_variant.featured_media | img_url: '360x' }} 360w,{%- endif -%}
+              {%- if current_variant.featured_media.width >= 533 -%}{{ current_variant.featured_media | img_url: '533x' }} 533w,{%- endif -%}
+              {%- if current_variant.featured_media.width >= 720 -%}{{ current_variant.featured_media | img_url: '720x' }} 720w,{%- endif -%}
+              {%- if current_variant.featured_media.width >= 940 -%}{{ current_variant.featured_media | img_url: '940x' }} 940w,{%- endif -%}
+              {%- if current_variant.featured_media.width >= 1066 -%}{{ current_variant.featured_media | img_url: '1066x' }} 1066w{%- endif -%}"
+              src="{{ current_variant.featured_media | img_url }}"
+              sizes="(min-width: 1100px) 535px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+              alt="{{ product.featured_media.alt | default: product.title | escape }}"
+              loading="lazy"
+              name="variant-image"
+              class="mm-product-card__image"
+            >
+        </a>
+      {%- endif -%}
+      
+      <div class="mm-product-card__badges">
+        {%- if product.available == false -%}
+          <span class="mm-product-card__badge sold-out" aria-hidden="true">
+            Sold Out
+          </span>
+        {%- elsif product.compare_at_price > product.price and product.available -%}
+          <span class="mm-product-card__badge on-sale" aria-hidden="true">
+            On Sale
+          </span>
+        {%- endif -%}
+      </div>
+    </div>
+    
+    <div class="mm-product-card__info">
+      <a href="{{ product.url }}" class="mm-product-card__title">
+        {{ product.title }}
+      </a>
+  
+      <div class="mm-product-card__meta {% unless current_variant.metafields.custom.variant_info %}is--hidden{% endunless %}">
+        {{ current_variant.metafields.custom.variant_info }}
+      </div>
+      
+      <div class="mm-product-card__prices">  
+        <span name="variant-price" class="mm-product-card__price{% if compare_at_price > price %} on-sale{% endif %}">
+          {{ price | money_without_trailing_zeros }}
+        </span>            
+        <span name="variant-compare-at-price" class="mm-product-card__compareprice{% unless compare_at_price > price %} hidden{% endunless %}">
+          {{ compare_at_price | money_without_trailing_zeros }}
+        </span>
+      </div>
+  
+      {% unless product.has_only_default_variant %}
+        <div class="field">
+          <select name="variant-selector" class="mm-product-card__options select__select">
+            {% for variant in product.variants %}
+              <option value="{{ variant.id }}">{{ variant.title }}</option>
+            {% endfor %}
+          </select>
+        </div> 
+      {% else %}
+        <input type="hidden" name="id" value="{{ current_variant.id }}">
+      {% endunless %}
+  
+      <div class="mm-product-card__action">
+        <button type="button" name="add_to_cart" class="button">Add to Bag</button>
+      </div>
+     <script type="application/json">
+        [
+          {%- for variant in product.variants -%}
+            {%- assign variantJson = variant | json -%}
+            {%- assign getSize = variantJson | size | minus: 1 -%}
+            {%- assign variantJson = variantJson | slice: 0, getSize -%}
+            
+            {{- variantJson -}},
+            "metafield": "{{ variant.metafields.custom.variant_info }}"
+            }{% unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+        ]
+      </script>
+    </div>
+</marmeto-product-card>
+    

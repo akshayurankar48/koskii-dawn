@@ -1,0 +1,100 @@
+{{ 'marmeto-product.css' | asset_url | stylesheet_tag }}
+{% style %}
+.product-list__flex{
+    display: flex;
+    margin: 30px -10px;
+    flex-wrap: wrap;
+}
+.product-list__product{
+    width: 25%;
+    text-align: center;
+}
+.product__image_wrapper{
+    width: 100%;
+    padding-bottom:150%;
+    position: relative;
+    margin: 0px 10px;
+}
+.product__image{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+.product__title{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.heading__wrapper{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+{% endstyle %}
+{% if section.settings.collection !=  blank %}
+<div class="product-list page-width">
+    <div class="heading__wrapper">
+        <div class="product-list__header">
+            <h2>{{ section.settings.title }}</h2>
+        </div>
+        {% if section.settings.show_viewall == true %}
+            <div>
+                <a href="{{ section.settings.collection.url }}">view all</a>
+            </div>
+        {% endif %}
+    </div>
+    
+    <div class="product-list__flex">
+        
+            {% for product in section.settings.collection.products limit: section.settings.product_limit %}
+                {% render 'marmeto-product-card', product: product %}
+            {% endfor %}
+        
+    </div>
+</div>
+{% endif %}
+
+{% schema %}
+{
+    "name":"Product list",
+    "class":"section",
+    "settings":[
+            {
+                "type":"text",
+                "id":"title",
+                "label":"Title"
+            },
+            {
+                "type": "checkbox",
+                "id": "show_viewall",
+                "label": "Show view all",
+                "default": false
+            },
+            {
+                "type": "collection",
+                "id": "collection",
+                "label": "Choose collection"
+            },
+            {
+                "type": "range",
+                "id": "product_limit",
+                "label": "Product limit",
+                "min": 4,
+                "max": 12,
+                "step": 1,
+                "default": 4
+            }
+    ],
+    "presets":[
+    {
+        "name":"Product list"
+    }
+    ]
+}
+{% endschema %}
